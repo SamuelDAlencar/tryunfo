@@ -64,7 +64,10 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
+      hasTrunfo,
     } = this.state;
+
     const newCard = { cardName,
       cardDescription,
       cardAttr1,
@@ -83,7 +86,17 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: '',
+      isSaveButtonDisabled: true,
+      cardTrunfo: false,
     });
+
+    if (cardTrunfo && !hasTrunfo) {
+      console.log('agora tem');
+      this.setState({ hasTrunfo: true });
+    }
+    if (hasTrunfo) {
+      console.log('ja tem');
+    }
   }
 
   render() {
