@@ -99,9 +99,9 @@ export default class Form extends Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        {
-          !hasTrunfo
-            ? <label htmlFor="trunfo">
+        {!hasTrunfo
+          ? (
+            <label htmlFor="trunfo">
               Trunfo
               <input
                 name="cardTrunfo"
@@ -112,8 +112,8 @@ export default class Form extends Component {
                 onChange={ onInputChange }
               />
             </label>
-            : <p>Você já tem um Super Trunfo em seu baralho</p>
-        }
+          )
+          : <p>Você já tem um Super Trunfo em seu baralho</p>}
         <button
           name="isSaveButtonDisabled"
           type="button"
