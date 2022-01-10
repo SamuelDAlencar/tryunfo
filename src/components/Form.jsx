@@ -111,7 +111,7 @@ export default class Form extends Component {
                 checked={ cardTrunfo }
                 onChange={ onInputChange }
               />
-              </label>
+            </label>
             : <p>Você já tem um Super Trunfo em seu baralho</p>
         }
         <button
