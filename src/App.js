@@ -91,11 +91,7 @@ class App extends React.Component {
     });
 
     if (cardTrunfo && !hasTrunfo) {
-      console.log('agora tem');
       this.setState({ hasTrunfo: true });
-    }
-    if (hasTrunfo) {
-      console.log('ja tem');
     }
   }
 
