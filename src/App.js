@@ -1,13 +1,14 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-// import AddCard from './components/AddCard';
+import RemoverButton from './components/RemoverButton';
 
 class App extends React.Component {
   constructor() {
     super();
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.cardRemover = this.cardRemover.bind(this);
     this.state = {
       cards: [],
       cardName: '',
@@ -77,6 +78,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     };
 
     this.setState(({ cards }) => ({
@@ -97,6 +99,23 @@ class App extends React.Component {
     }
   }
 
+  cardRemover = (e) => {
+    const { cards } = this.state;
+    const { id } = e.parentNode;
+
+    if (cards[id].cardTrunfo) {
+      this.setState({
+        hasTrunfo: false,
+      }, () => {
+        this.setState({ cards: cards.slice(id + 1) });
+      });
+    } else {
+      this.setState({ cards: cards.slice(id + 1) });
+    }
+    console.log(cards[id].cardTrunfo);
+    console.log(id);
+  }
+
   render() {
     const {
       cards,
@@ -114,41 +133,54 @@ class App extends React.Component {
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form
-          onInputChange={ this.onInputChange }
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          onSaveButtonClick={ this.onSaveButtonClick }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        {cards.map((card) => (<Card
-          key={ card.cardName }
-          cardName={ card.cardName }
-          cardDescription={ card.cardDescription }
-          cardAttr1={ card.cardAttr1 }
-          cardAttr2={ card.cardAttr2 }
-          cardAttr3={ card.cardAttr3 }
-          cardImage={ card.cardImage }
-          cardRare={ card.cardRare }
-          cardTrunfo={ card.cardTrunfo }
-        />))}
+        <section className="form-cards">
+          <Form
+            onInputChange={ this.onInputChange }
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            onSaveButtonClick={ this.onSaveButtonClick }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+          />
+          <section className="cardPreview">
+            <h1>Card preview</h1>
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </section>
+        </section>
+        <section className="savedCards">
+          {cards.map((card, i) => (
+            <div key={ i } id={ i } className="savedCard">
+              <Card
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+              <RemoverButton
+                cardRemover={ ((e) => this.cardRemover(e.target)) }
+              />
+            </div>
+          ))}
+        </section>
       </div>
     );
   }

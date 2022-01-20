@@ -19,7 +19,7 @@ export default class Form extends Component {
     } = this.props;
 
     return (
-      <form>
+      <form className="form">
         <label htmlFor="name">
           Nome
           <input

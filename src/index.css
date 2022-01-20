@@ -5,9 +5,40 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: blueviolet;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.form-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 50%; 
+}
+
+.cardPreview {
+  width: 30%;
+}
+
+.card {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.savedCards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.savedCard {
+  margin-top: 50px;
+  width: 30%;
 }
