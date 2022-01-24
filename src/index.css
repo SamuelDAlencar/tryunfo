@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: blueviolet;
+  background-color: rgb(67, 54, 80);
+  font-family: 'Gotham', sans-serif;
+  color: azure;
 }
 
 code {
@@ -13,32 +15,127 @@ code {
     monospace;
 }
 
+.main h1 {
+  text-align: center;
+  letter-spacing: 2px;
+}
+
 .form-cards {
   display: flex;
   justify-content: space-around;
+  margin-top: 75px;
+  transition: 0.1s;
+  height: 100vh;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  width: 50%; 
+  margin-left: 150px;
+  width: 30%; 
+  transition: 0.1s;
+}
+
+.form label {
+  margin: 10px 0px;
+  transition: 0.1s;
+}
+
+.form label input, .form label textarea, .form label select {
+  margin-left: 10px;
+  border-radius: 3px;
+  padding: 5px;
+  border: 0px;
+  font-family: 'Gotham', sans-serif;
+  background-color: azure;
+}
+
+.form button {
+  border: 0px;
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: aquamarine;
+  font-size: 20px;
+  margin: 50px 0px 0px 100px;
+  transition: 0.1s;
+  font-family: 'Gotham', sans-serif;
+  cursor: pointer;
 }
 
 .cardPreview {
   width: 30%;
+  margin-right: 150px;
+  transition: 0.1s;
 }
 
 .card {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(#000000 0%, #63407b 90%);
+  color: azure;
+  width: 80%;
+  border: 10px solid black;
+  padding: 20px;
+  transition: 0.1s;
+  border-radius: 15px;
+  height: fit-content;
+}
+
+.card h1 {
+  font-size: 30px;
+  margin: 5px;
+}
+
+.card span {
   border: 1px solid black;
+  border-radius: 5px;
+  width: 70%;
+  padding: 8px;
+  text-align: center;
+  font-size: 19px;
+}
+
+.remove-button {
+  background-color: rgb(175, 174, 174);
+  color: white;
+  border: 0px;
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 5px 0px;
+  font-size: 18px;
+  transition: 0.1s;
+  font-family: 'Gotham', sans-serif;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+.card span, .card img {
+  margin: 5px 0px;
+}
+
+.card img {
+  align-self: center;
+  width: 90%;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 20px 0px;
 }
 
 .savedCards {
   display: flex;
   justify-content: space-around;
+  transition: 0.1s;
 }
 
 .savedCard {
   margin-top: 50px;
   width: 30%;
+  transition: 0.1s;
 }

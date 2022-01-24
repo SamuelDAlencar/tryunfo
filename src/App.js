@@ -21,12 +21,15 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      noCards: true,
+      emptyPreview: true,
     };
   }
 
   onInputChange({ target: { name, type, checked, value } }) {
     this.setState({
       [name]: type === 'checkbox' ? checked : value,
+      emptyPreview: false,
     }, () => {
       const {
         cardName,
@@ -92,6 +95,8 @@ class App extends React.Component {
       cardRare: '',
       isSaveButtonDisabled: true,
       cardTrunfo: false,
+      noCards: false,
+      emptyPreview: true,
     }));
 
     if (cardTrunfo && !hasTrunfo) {
@@ -99,9 +104,9 @@ class App extends React.Component {
     }
   }
 
-  cardRemover = (e) => {
+  cardRemover = ({ parentNode }) => {
     const { cards } = this.state;
-    const { id } = e.parentNode;
+    const { id } = parentNode;
 
     if (cards[id].cardTrunfo) {
       this.setState({
@@ -114,10 +119,13 @@ class App extends React.Component {
     }
     console.log(cards[id].cardTrunfo);
     console.log(id);
+
+    // Still incomplete
   }
 
   render() {
     const {
+      noCards,
       cards,
       cardName,
       cardDescription,
@@ -129,9 +137,10 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      emptyPreview,
     } = this.state;
     return (
-      <div>
+      <div className="main">
         <h1>Tryunfo</h1>
         <section className="form-cards">
           <Form
@@ -149,7 +158,6 @@ class App extends React.Component {
             isSaveButtonDisabled={ isSaveButtonDisabled }
           />
           <section className="cardPreview">
-            <h1>Card preview</h1>
             <Card
               cardName={ cardName }
               cardDescription={ cardDescription }
@@ -159,9 +167,11 @@ class App extends React.Component {
               cardImage={ cardImage }
               cardRare={ cardRare }
               cardTrunfo={ cardTrunfo }
+              emptyPreview={ emptyPreview }
             />
           </section>
         </section>
+        { noCards ? <h1>Seu baralho está vazio</h1> : <h1>Seu baralho</h1> }
         <section className="savedCards">
           {cards.map((card, i) => (
             <div key={ i } id={ i } className="savedCard">

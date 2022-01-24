@@ -11,6 +11,7 @@ export default class RemoverButton extends Component {
         type="button"
         onClick={ cardRemover }
         data-testid="delete-button"
+        className="remove-button"
       >
         Teste
       </button>

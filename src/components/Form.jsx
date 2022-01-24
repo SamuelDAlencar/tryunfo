@@ -21,7 +21,7 @@ export default class Form extends Component {
     return (
       <form className="form">
         <label htmlFor="name">
-          Nome
+          Nome:
           <input
             name="cardName"
             id="name"
@@ -32,7 +32,7 @@ export default class Form extends Component {
           />
         </label>
         <label htmlFor="descrição">
-          Descrição
+          Descrição:
           <textarea
             name="cardDescription"
             id="descrição"
@@ -42,7 +42,7 @@ export default class Form extends Component {
           />
         </label>
         <label htmlFor="atribute1">
-          Atrr 1
+          Atrr 1:
           <input
             name="cardAttr1"
             id="atribute1"
@@ -53,7 +53,7 @@ export default class Form extends Component {
           />
         </label>
         <label htmlFor="atribute2">
-          Atrr 2
+          Atrr 2:
           <input
             name="cardAttr2"
             id="atribute2"
@@ -64,7 +64,7 @@ export default class Form extends Component {
           />
         </label>
         <label htmlFor="atribute3">
-          Atrr 3
+          Atrr 3:
           <input
             name="cardAttr3"
             id="atribute3"
@@ -75,7 +75,7 @@ export default class Form extends Component {
           />
         </label>
         <label htmlFor="imagem">
-          Imagem
+          Imagem:
           <input
             name="cardImage"
             id="image"
@@ -86,7 +86,7 @@ export default class Form extends Component {
           />
         </label>
         <label htmlFor="raridade">
-          Raridade
+          Raridade:
           <select
             name="cardRare"
             id="raridade"
@@ -102,7 +102,7 @@ export default class Form extends Component {
         {!hasTrunfo
           ? (
             <label htmlFor="trunfo">
-              Trunfo
+              Trunfo:
               <input
                 name="cardTrunfo"
                 id="trunfo"
@@ -113,7 +113,7 @@ export default class Form extends Component {
               />
             </label>
           )
-          : <p>Você já tem um Super Trunfo em seu baralho</p>}
+          : <h4>Você já tem um Super Trunfo em seu baralho</h4>}
         <button
           name="isSaveButtonDisabled"
           type="button"
