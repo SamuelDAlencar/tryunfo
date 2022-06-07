@@ -26,6 +26,10 @@ class App extends React.Component {
     };
   }
 
+  componentDidUpdate() {
+    console.log('I updated again!');
+  }
+
   onInputChange({ target: { name, type, checked, value } }) {
     this.setState({
       [name]: type === 'checkbox' ? checked : value,
@@ -108,18 +112,17 @@ class App extends React.Component {
     const { cards } = this.state;
     const { id } = parentNode;
 
-    if (cards[id].cardTrunfo) {
+    if (cards[id - 1].cardTrunfo) {
       this.setState({
         hasTrunfo: false,
       }, () => {
-        this.setState({ cards: cards.slice(id + 1) });
+        this.setState({ cards: cards.slice(id) });
       });
     } else {
-      this.setState({ cards: cards.slice(id + 1) });
+      this.setState({ cards: cards.slice(id) });
+      console.log(cards[id - 1]);
+      console.log(id);
     }
-    console.log(cards[id].cardTrunfo);
-    console.log(id);
-
     // Still incomplete
   }
 
@@ -174,7 +177,7 @@ class App extends React.Component {
         { noCards ? <h1>Seu baralho está vazio</h1> : <h1>Seu baralho</h1> }
         <section className="savedCards">
           {cards.map((card, i) => (
-            <div key={ i } id={ i } className="savedCard">
+            <div key={ i } id={ i + 1 } className="savedCard">
               <Card
                 cardName={ card.cardName }
                 cardDescription={ card.cardDescription }

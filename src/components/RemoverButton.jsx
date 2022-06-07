@@ -13,7 +13,7 @@ export default class RemoverButton extends Component {
         data-testid="delete-button"
         className="remove-button"
       >
-        Teste
+        Remover
       </button>
     );
   }
